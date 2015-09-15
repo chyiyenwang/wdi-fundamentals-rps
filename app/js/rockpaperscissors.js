@@ -25,14 +25,16 @@ function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return /* Your Expression */;
+    var move = move || getInput();
+    return move;
 }
 
 function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return /* Your Expression */;
+    var move = move || randomPlay();
+    return move;
 }
 
 function getWinner(playerMove,computerMove) {
@@ -41,6 +43,59 @@ function getWinner(playerMove,computerMove) {
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
     /* YOUR CODE HERE */
+    var playerMove = getPlayerMove();
+    var computerMove = getComputerMove();
+    var playerNumber = 0;
+    var computerNumber = 0;
+
+    console.log(playerMove);
+    console.log(computerMove);
+    // Associate playerMove with a number
+    if (playerMove == 'rock') {
+        playerNumber = 0;
+    }
+    else if (playerMove == 'paper') {
+        playerNumber = 1;
+    }
+    else if (playerMove == 'scissors') {
+        playerNumber = 2;
+    }
+
+    // Associate computerMove with a number
+    if (computerMove == 'rock') {
+        computerNumber = 0;
+    }
+    else if (computerMove == 'paper') {
+        computerNumber = 1;
+    }
+    else if (computerMove == 'scissors') {
+        computerNumber = 2;
+    }
+
+    var difference = ((playerNumber - computerNumber) % 3)
+    console.log(playerNumber);
+    console.log(computerNumber);
+    console.log(difference);
+    if (difference == 0) {
+        winner = 'tied';
+    }
+    else if (difference == -1 || difference == 2) {
+        winner = 'computer';
+    }
+    else if (difference == -2 || difference == 1) {
+        winner = 'player';
+    }
+    // if (playerMove == computerMove) {
+    //     winner = 'tie';
+    // } else if (playerMove == 'rock' && computerMove == 'paper') {
+    //     winner = 'computer';
+    // } else if (playerMove == 'rock' && computerMove == 'scissors') {
+    //     winner = 'player';
+    // } else if (playerMove == 'paper' && computerMove == 'rock') {
+    //     winner = 'player';
+    // } else if (playerMove == 'paper' && computerMove == 'scissors') {
+    //     winner = 'computer'
+    // }
     return winner;
 }
 
